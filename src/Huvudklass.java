@@ -5,11 +5,12 @@ import java.util.List;
 public class Huvudklass {
 
     Huvudklass() {
-
+        //Nedan finns polymorfism
         Växter igge = new Kaktus("Igge", 0.02);
         Växter laura = new Palm("Laura", 5);
         Växter meatloaf = new KöttätandeVäxter("Meatloaf", 0.7);
         Växter olof = new Palm("Olof", 1);
+
         List<Växter> hotellGäster = Arrays.asList(igge, laura, meatloaf, olof);
 
         while (true) {
@@ -17,14 +18,16 @@ public class Huvudklass {
             if (växtAttVattna == null) {
                 break;
             }
+            boolean växtenFinns = false;
             for (Växter h : hotellGäster) {
                 if (h.getName().equalsIgnoreCase(växtAttVattna)) {
                         h.beräknaVätska();
+                        växtenFinns = true;
                 }
-                else if (!h.getName().equalsIgnoreCase(växtAttVattna)) {
-                    JOptionPane.showMessageDialog(null, "Hittade inte växten med det namnet");
-                    break;
-                }
+
+            }if (!växtenFinns) {
+                JOptionPane.showMessageDialog(null, "Hittade inte växten med det namnet");
+                break;
             }
         }
     }
